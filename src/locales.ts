@@ -17,15 +17,32 @@ export const LOCALES_SETTING: LocaleSetting = {
 		label: "English",
 		lang: "en-US",
 	},
-	ja: {
-		label: "日本語",
+	es: {
+		label: "Español",
+		lang: "es-ES",
+	},
+	ar: {
+		label: "العربية",
+		dir: "rtl",
+	},
+	pt: {
+		label: "Português",
+		lang: "pt-PT",
+	},
+	fr: {
+		label: "Français",
+		lang: "fr-FR",
+	},
+	ru: {
+		label: "Русский",
+		lang: "ru-RU",
 	},
 	"zh-cn": {
 		label: "简体中文",
 		lang: "zh-CN",
 	},
-	ar: {
-		label: "العربية",
-		dir: "rtl",
+	ja: {
+		label: "日本語",
+		lang: "ja-JP",
 	},
 };

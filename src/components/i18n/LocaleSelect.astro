@@ -4,9 +4,14 @@
 import { getLocalePaths, LOCALES } from "@/i18n";
 ---
 
-<label>
-  <span class="material-icons-sharp">translate</span>
-  <select data-languageSelect>
+<div class="relative inline-flex items-center">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 absolute left-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+  </svg>
+  <select 
+    data-languageSelect
+    class="appearance-none pl-8 pr-8 py-1.5 bg-gray-50 border border-gray-200 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-200 hover:bg-gray-100 transition-colors"
+  >
     {
       getLocalePaths(Astro.url).map(({ path, lang }) => (
         <option
@@ -19,8 +24,10 @@ import { getLocalePaths, LOCALES } from "@/i18n";
       ))
     }
   </select>
-  <span class="material-icons-sharp">expand_more</span>
-</label>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 absolute right-2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+  </svg>
+</div>
 
 <script is:inline>
   const selects = document.querySelectorAll("[data-languageSelect]");
@@ -33,38 +40,3 @@ import { getLocalePaths, LOCALES } from "@/i18n";
     });
   });
 </script>
-
-<style>
-  label {
-    position: relative;
-    display: inline-block;
-    width: 240px;
-    text-align-last: left;
-    .material-icons-sharp {
-      pointer-events: none;
-      position: absolute;
-      color: var(--color-theme);
-      &:first-child {
-        font-size: 24px;
-        inset: 8px auto 8px 8px;
-        opacity: 0.4;
-      }
-      &:last-child {
-        font-size: 28px;
-        inset: 6px 6px 6px auto;
-      }
-    }
-  }
-  select {
-    width: 100%;
-    height: 40px;
-    padding-inline: 38px;
-    cursor: pointer;
-    appearance: none;
-    border-radius: 6px;
-    font-family: "Noto Sans";
-    color: var(--color-main);
-    background-color: var(--color-base);
-    border: 2px solid var(--color-theme);
-  }
-</style>

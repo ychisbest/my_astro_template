@@ -1,4 +1,5 @@
 ---
+import GameList from "@/components/GameList.astro";
 import { LOCALES, useTranslations, type Lang } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 const t = useTranslations(Astro.currentLocale as Lang);
@@ -9,8 +10,11 @@ export const getStaticPaths = () =>
   Object.keys(LOCALES).map((lang) => ({
     params: { lang },
   }));
+
+
+
 ---
 
 <Layout>
-
+首页
 </Layout>

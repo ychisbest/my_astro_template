@@ -12,4 +12,8 @@ const blog = defineCollection({
 		}),
 });
 
-export const collections = { blog };
+const game = defineCollection({
+	loader: glob({ pattern: "**/[^_]*.json", base: "./src/game" }),
+});
+
+export const collections = { blog, game };

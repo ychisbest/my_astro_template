@@ -7,13 +7,79 @@ import { useTranslations, type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 const t = useTranslations(Astro.currentLocale as Lang);
 
-
 const locale = Astro.currentLocale as Lang;
 
 const isActive = (path: string) =>
   getRelativeLocaleUrl(locale, path) === Astro.url.pathname;
 ---
 
-<header class="l-header">
-  <LocaleSelect />
+<header class="border-b border-[rgba(55,53,47,0.09)] px-4 py-4">
+  <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div class="flex items-center">
+      <a href={getRelativeLocaleUrl(locale, "/")} class="flex items-center gap-2 hover:bg-[rgba(55,53,47,0.08)] p-1 rounded">
+        <div class="bg-gray-800 text-white w-7 h-7 rounded flex items-center justify-center font-semibold">G</div>
+        <span class="font-medium text-lg">{t({
+          en: "Game Template",
+          es: "Plantilla de Juego",
+          ar: "قالب اللعبة",
+          pt: "Modelo de Jogo",
+          fr: "Modèle de Jeu",
+          ru: "Игровой Шаблон",
+          "zh-cn": "游戏模板",
+          ja: "ゲームテンプレート",
+        })}</span>
+      </a>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center gap-4">
+      <nav class="flex gap-2">
+        <a
+          href={getRelativeLocaleUrl(locale, "/")}
+          class={`px-2 py-1 rounded transition-colors text-[rgba(55,53,47,0.65)] hover:bg-[rgba(55,53,47,0.08)] ${isActive("/") ? "bg-[rgba(55,53,47,0.05)] text-[rgba(55,53,47,0.85)]" : ""}`}
+        >
+          {t({
+            en: "Home",
+            es: "Inicio",
+            ar: "الصفحة الرئيسية",
+            pt: "Início",
+            fr: "Accueil",
+            ru: "Главная",
+            "zh-cn": "首页",
+            ja: "ホーム",
+          })}
+        </a>
+        <a
+          href={getRelativeLocaleUrl(locale, "/games")}
+          class={`px-2 py-1 rounded transition-colors text-[rgba(55,53,47,0.65)] hover:bg-[rgba(55,53,47,0.08)] ${isActive("/games") ? "bg-[rgba(55,53,47,0.05)] text-[rgba(55,53,47,0.85)]" : ""}`}
+        >
+          {t({
+            en: "Games",
+            es: "Juegos",
+            ar: "ألعاب",
+            pt: "Jogos",
+            fr: "Jeux",
+            ru: "Игры",
+            "zh-cn": "游戏",
+            ja: "ゲーム",
+          })}
+        </a>
+        <a
+          href={getRelativeLocaleUrl(locale, "/about")}
+          class={`px-2 py-1 rounded transition-colors text-[rgba(55,53,47,0.65)] hover:bg-[rgba(55,53,47,0.08)] ${isActive("/about") ? "bg-[rgba(55,53,47,0.05)] text-[rgba(55,53,47,0.85)]" : ""}`}
+        >
+          {t({
+            en: "About",
+            es: "Acerca de",
+            ar: "حول",
+            pt: "Sobre",
+            fr: "À propos",
+            ru: "О нас",
+            "zh-cn": "关于",
+            ja: "について",
+          })}
+        </a>
+      </nav>
+      <LocaleSelect />
+    </div>
+  </div>
 </header>

@@ -21,10 +21,6 @@ export const LOCALES_SETTING: LocaleSetting = {
 		label: "Español",
 		lang: "es-ES",
 	},
-	ar: {
-		label: "العربية",
-		dir: "rtl",
-	},
 	pt: {
 		label: "Português",
 		lang: "pt-PT",
@@ -44,5 +40,9 @@ export const LOCALES_SETTING: LocaleSetting = {
 	ja: {
 		label: "日本語",
 		lang: "ja-JP",
+	},
+	ar: {
+		label: "العربية",
+		dir: "rtl",
 	},
 };

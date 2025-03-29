@@ -2,31 +2,32 @@
 // Select UI to switch between locales.
 
 import { getLocalePaths, LOCALES } from "@/i18n";
+import { Icon } from "astro-icon/components";
 ---
 
 <div class="relative inline-flex items-center">
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 absolute left-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-  </svg>
+  <Icon name="mdi:translate" class="h-4 w-4 text-gray-500 absolute left-2" />
   <select 
     data-languageSelect
     class="appearance-none pl-8 pr-8 py-1.5 bg-gray-50 border border-gray-200 rounded-md text-sm text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-200 hover:bg-gray-100 transition-colors"
   >
     {
-      getLocalePaths(Astro.url).map(({ path, lang }) => (
-        <option
-          label={LOCALES[lang].label}
-          value={path}
-          data-lang={lang}
-          selected={lang === Astro.currentLocale}
-          dir={LOCALES[lang].dir || null}
-        />
-      ))
+      getLocalePaths(Astro.url).map(({ path, lang }) => {
+        return (
+          <option
+            label={`${LOCALES[lang].label}`}
+            value={path}
+            data-lang={lang}
+            selected={lang === Astro.currentLocale}
+            dir={LOCALES[lang].dir || null}
+          />
+        );
+      })
+      
     }
   </select>
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 absolute right-2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-  </svg>
+
+  <Icon name="mdi:chevron-down" class="h-4 w-4 text-gray-500 absolute right-2 pointer-events-none" />
 </div>
 
 <script is:inline>

@@ -20,18 +20,93 @@ const title = post.data.title;
 ---
 
 <Layout {title}>
-  {
-    post.data.cover && (
-      <Image src={post.data.cover} alt={post.data.title} class="cover" />
-    )
-  }
+  <div class="article-container">
+    {
+      post.data.cover && (
+        <div class="cover-container">
+          <Image src={post.data.cover} alt={post.data.title} class="cover-image" />
+        </div>
+      )
+    }
 
-  <header>
-    <h1>{title}</h1>
-    <time datetime={post.data.date.toISOString()}>
-      {post.data.date.toLocaleDateString(lang)}
-    </time>
-  </header>
+    <header class="article-header">
+      <h1 class="article-title">{title}</h1>
+      <time datetime={post.data.date.toISOString()} class="article-date">
+        {post.data.date.toLocaleDateString(lang)}
+      </time>
+      {post.data.tags && (
+        <div class="article-tags">
+          {post.data.tags.map((tag: string) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      )}
+    </header>
 
-  <Content class="material-icons" />
+    <article class="article-content prose prose-lg">
+      <Content />
+    </article>
+  </div>
+
+  <style>
+    .article-container {
+      max-width: 85ch;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    .cover-container {
+      margin-bottom: 2rem;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+    .cover-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .article-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color, #eaeaea);
+    }
+    .article-title {
+      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .article-date {
+      display: block;
+      color: var(--text-muted, #6b7280);
+      font-size: 0.875rem;
+    }
+    .article-tags {
+      margin-top: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .tag {
+      padding: 0.25rem 0.75rem;
+      background-color: var(--tag-bg, #f3f4f6);
+      color: var(--tag-color, #4b5563);
+      border-radius: 9999px;
+      font-size: 0.75rem;
+    }
+    .article-content {
+      line-height: 1.8;
+    }
+    :global(.prose h2) {
+      margin-top: 2rem;
+      font-weight: 600;
+    }
+    :global(.prose img) {
+      border-radius: 0.5rem;
+    }
+    :global(.prose a) {
+      color: var(--link-color, #3b82f6);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  </style>
 </Layout>

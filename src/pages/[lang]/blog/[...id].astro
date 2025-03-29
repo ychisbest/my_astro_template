@@ -34,13 +34,6 @@ const title = post.data.title;
       <time datetime={post.data.date.toISOString()} class="article-date">
         {post.data.date.toLocaleDateString(lang)}
       </time>
-      {post.data.tags && (
-        <div class="article-tags">
-          {post.data.tags.map((tag: string) => (
-            <span class="tag">{tag}</span>
-          ))}
-        </div>
-      )}
     </header>
 
     <article class="article-content prose prose-lg">

@@ -9,10 +9,13 @@ import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
 
 
+import react from '@astrojs/react';
+
+
 // https://astro.build/config
 export default defineConfig({
   // Set your site's URL
-  site: 'https://astro-i18n-starter.pages.dev',
+  site: 'https://formalizer.app',
 
   i18n: {
     defaultLocale: DEFAULT_LOCALE_SETTING,
@@ -32,7 +35,7 @@ export default defineConfig({
         )
       ),
     },
-  }), icon()],
+  }), icon(), react()],
 
   vite: {
     plugins: [tailwindcss()],

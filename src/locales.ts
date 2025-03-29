@@ -43,6 +43,7 @@ export const LOCALES_SETTING: LocaleSetting = {
 	},
 	ar: {
 		label: "العربية",
+		lang: "ar-SA",
 		dir: "rtl",
 	},
 };
